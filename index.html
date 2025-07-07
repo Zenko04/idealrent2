@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idéal Rent | Sportwagenvermietung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for animations and effects not covered by Tailwind */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1494972308805-46337c85808c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .car-card {
+            transition: all 0.3s ease;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-scrolled {
+            background-color: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .benefit-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1);
+            color: #3b82f6;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">
+                <span class="text-blue-400">Idéal</span>Rent
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-blue-300 transition">Home</a>
+                <a href="#cars" class="text-white hover:text-blue-300 transition">Unsere Fahrzeuge</a>
+                <a href="#benefits" class="text-white hover:text-blue-300 transition">Benefits</a>
+                <a href="#contact" class="text-white hover:text-blue-300 transition">Kontakt</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gray-900 z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-white text-xl hover:text-blue-300 transition">Home</a>
+            <a href="#cars" class="text-white text-xl hover:text-blue-300 transition">Unsere Fahrzeuge</a>
+            <a href="#benefits" class="text-white text-xl hover:text-blue-300 transition">Benefits</a>
+            <a href="#contact" class="text-white text-xl hover:text-blue-300 transition">Kontakt</a>
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div data-aos="fade-up" class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Erlebe <span class="text-blue-400">Pures Adrenalin</span></h1>
+                <p class="text-xl text-gray-300 mb-8">Miete dein Premium-Sportwagen für das ultimative Fahrerlebnis. Spüre die Kraft, genieße den Luxus.</p>
+                <a href="#cars" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+                    Buche hier
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section id="cars" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div data-aos="fade-up" class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Unsere <span class="text-blue-500">Exklusiven Fahrzeuge</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Derzeit präsentieren wir unser Flaggschiff-Modell. Weitere Premium-Fahrzeuge folgen in Kürze!</p>
+            </div>
+
+            <!-- Car Card - This is the template that can be duplicated for new cars -->
+            <!-- START OF CAR CARD TEMPLATE -->
+            <div data-aos="fade-up" class="car-card bg-gray-50 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto mb-16">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Mercedes C63 AMG Coupé" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Mercedes C63 AMG Coupé</h3>
+                        <p class="text-gray-600 mb-6">Erlebe brachiale V8-Power und pure Emotion – der Mercedes-AMG C 63 Coupé steht bereit für deinen unvergesslichen Auftritt.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div>
+                                <p class="text-gray-500 text-sm">Modell</p>
+                                <p class="font-semibold">C63 AMG Coupé</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">PS</p>
+                                <p class="font-semibold">510 PS</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">0-100 km/h</p>
+                                <p class="font-semibold">3,9 sek</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">VMax</p>
+                                <p class="font-semibold">280 km/h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Tagespreis</p>
+                                <p class="text-2xl font-bold text-blue-500">269€</p>
+                                <p class="text-gray-500 text-sm">inkl. 200km <br></p>
+                            </div>
+                            <a href="https://wa.me/YOUR_NUMBER?text=I'm%20interested%20in%20renting%20the%20Porsche%20911%20Turbo%20S" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 inline-block">
+                                Buche hier
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF CAR CARD TEMPLATE -->
+            
+            <!-- Add more car cards here by duplicating the template above -->
+            <!-- Example of how to add another car (commented out for now) -->
+            <!--
+            <div data-aos="fade-up" class="car-card bg-gray-50 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto mb-16">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="NEW_CAR_IMAGE_URL" 
+                             alt="NEW_CAR_NAME" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">NEW_CAR_NAME</h3>
+                        <p class="text-gray-600 mb-6">NEW_CAR_DESCRIPTION</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div>
+                                <p class="text-gray-500 text-sm">Model</p>
+                                <p class="font-semibold">MODEL</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Horsepower</p>
+                                <p class="font-semibold">HP</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">0-60 mph</p>
+                                <p class="font-semibold">X.X sec</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">Top Speed</p>
+                                <p class="font-semibold">XXX mph</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Price per day</p>
+                                <p class="text-2xl font-bold text-blue-500">$XXX</p>
+                            </div>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                                Rent this car
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+            
+            <div data-aos="fade-up" class="text-center mt-12">
+                <p class="text-gray-600 mb-6">Weitere Premium-Fahrzeuge kommen bald zu unserer Flotte!</p>
+                <button class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-flex items-center">
+                    Erinner mich, wenn neue Autos eintreffen.
+                    <i class="fas fa-bell ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div data-aos="fade-up" class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Warum solltest du bei <span class="text-blue-400">IdéalRent</span> buchen?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Spür den Moment, wenn du deinen Traumwagen startest. Bei uns wird Luxus zum Erlebnis – unvergesslich, aufregend und ganz persönlich für dich!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div data-aos="fade-up" data-aos-delay="100" class="benefit-card bg-gray-800 rounded-xl p-8 hover:bg-gray-700 transition duration-300">
+                    <div class="benefit-icon text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Einfaches Buchen</h3>
+                    <p class="text-gray-400">Einfach per WhatsApp buchen und in wenigen Minuten losfahren – so geht Sportwagen mieten bei IdéalRent.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200" class="benefit-card bg-gray-800 rounded-xl p-8 hover:bg-gray-700 transition duration-300">
+                    <div class="benefit-icon text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Flexibler Standort</h3>
+                    <p class="text-gray-400">Ob Innenstadt, Vorstadt oder bei deinem Lieblingsspot – wir treffen dich in München, wo’s für dich passt.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="300" class="benefit-card bg-gray-800 rounded-xl p-8 hover:bg-gray-700 transition duration-300">
+                    <div class="benefit-icon text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Premium Versicherung</h3>
+                    <p class="text-gray-400">Vollkasko inklusive – damit du dich ganz aufs Fahrerlebnis konzentrieren kannst.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="100" class="benefit-card bg-gray-800 rounded-xl p-8 hover:bg-gray-700 transition duration-300">
+                    <div class="benefit-icon text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Support</h3>
+                    <p class="text-gray-400">Unser Team ist rund um die Uhr für dich da – egal, was du brauchst.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200" class="benefit-card bg-gray-800 rounded-xl p-8 hover:bg-gray-700 transition duration-300">
+                    <div class="benefit-icon text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Perfektion bis ins kleinste Detail.</h3>
+                    <p class="text-gray-400">Jeder Wagen wird vor der Übergabe gründlich gecheckt und frisch aufbereitet – für ein perfektes Fahrerlebnis.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div data-aos="fade-up" class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                         Komme mit uns in <span class="text-blue-500">Kontakt</span></h2> <p class="text-gray-600">Fragen zu unseren Angeboten oder bereit für dein Traumauto? Schreib uns einfach!</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div data-aos="fade-right">
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Vollständiger Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email Addresse</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Deine Nachricht</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div data-aos="fade-left" class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="text-blue-500 text-2xl mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Unser Standort</h3>
+                                <p class="text-gray-600">Landshuter Straße 101<br>84307, Eggenfelden</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-500 text-2xl mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Unsere Telefonnummer!</h3>
+                                <p class="text-gray-600">+hs wer callt<br>Mo-So: 9:00 - 20:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-500 text-2xl mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Schreibe uns per Mail!</h3>
+                                <p class="text-gray-600">info@idéalrent.de</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Unsere Sozialen Medien</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl transition">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">
+                        <span class="text-blue-400">Idéal</span>Rent 
+                    </a>
+                    <p class="text-gray-400 mt-2">Luxus. Power. Fahrspaß. <br> Deine Sportwagenmiete für unvergessliche Momente.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#cars" class="text-gray-400 hover:text-white transition">Unsere Fahrzeuge</a></li>
+                            <li><a href="#benefits" class="text-gray-400 hover:text-white transition">Benefits</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Rechtliches</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Allgemeine Geschäftsbedingungen (AGB)</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Datenschutzerklärung</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Infos zur Versicherung</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-span-2 md:col-span-1">
+                        <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                        <p class="text-gray-400 mb-4">Meld dich an und erfahr als Erster von neuen Fahrzeugen und Sonderaktionen.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Deine E-Mail Addresse" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                            <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 IdéalRent. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuButton = document.querySelector('button.md\\:hidden');
+        
+        menuButton.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobileMenu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
